@@ -1,16 +1,17 @@
 import random
 import sys
 
-quotes = ("It's just a flesh wound.",
-          "He's not the Messiah. He's a very naughty boy!",
-          "THIS IS AN EX-PARROT!!")
+def rearrange(word):
+    words = []
 
-
-def random_python_quote():
-    rand_index = random.randint(0, len(quotes) - 1)
-    return quotes[rand_index]
+    while len(word) != 0:
+        shuffle_word = random.choice(word)
+        words.append(shuffle_word)
+        word.remove(shuffle_word)
+    return(' '.join(words))
 
 if __name__ == '__main__':
     params = sys.argv[1:]
-    random.shuffle(params)
-    print(params)
+    # random.shuffle(params) Eazy way to do it.
+    shuffled = rearrange(params)
+    print(shuffled)
