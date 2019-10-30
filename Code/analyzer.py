@@ -26,17 +26,36 @@ def histogram_dict(file):
             histogram[word] = 1
     return histogram
 
+
+def histogram_tuple(file):
+    text = read_words(file)
+    histogram = []
+    amount = 0
+    for word in text:
+        print(histogram)
+        is_updated = False
+        for tuple in histogram:
+            if tuple[0] == word:
+                amount = tuple[1] +1
+                histogram.remove(tuple)
+                histogram.append((word,amount))
+                is_updated = True
+        if is_updated == False:
+            histogram.append((word, 1))
+    return histogram
+
 def unique_words(histogram):
-    counter = 0
-    for list in histogram:
-        counter += 1
-    return counter
+    return len(histogram)
 
 def frequency(word, histogram):
     for list in histogram:
         if list[0] == word:
             return list[1]
 
+def frequency_dic(word,histogram):
+    for i, keys in histogram.items():
+        if i == word:
+            return keys
 
 if __name__ == "__main__":
     histogram = (histogram('texts/test.txt'))
@@ -47,3 +66,8 @@ if __name__ == "__main__":
     print(histogram)
     print(f'Unique words: {unique_words}')
     print(f'Amount of "{word}": {word_frequency}' )
+
+    histogram_dict = (histogram_dict('texts/test.txt'))
+    word_frequency_dict = frequency_dic(word, histogram_dict)
+    print(histogram_dict)
+    print(word_frequency_dict)
