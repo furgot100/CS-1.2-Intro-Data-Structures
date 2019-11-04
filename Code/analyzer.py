@@ -60,14 +60,14 @@ def frequency_dic(word,histogram):
 if __name__ == "__main__":
     histogram = (histogram('texts/test.txt'))
     unique_words = unique_words(histogram)
-    word = 'sleep' 
+    word = 'fish' 
     word_frequency = frequency(word,histogram)
 
-    print(histogram)
+    # print(histogram)
     print(f'Unique words: {unique_words}')
     print(f'Amount of "{word}": {word_frequency}' )
 
     histogram_dict = (histogram_dict('texts/test.txt'))
     word_frequency_dict = frequency_dic(word, histogram_dict)
     print(histogram_dict)
-    print(word_frequency_dict)
+    # print(word_frequency_dict)
