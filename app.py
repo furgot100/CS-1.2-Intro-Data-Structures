@@ -9,5 +9,6 @@ def index():
     """Return Homepage"""
     text = 'Code/texts/metamorphosis.txt'
     histogram = histogram_dict(text)
-    sentence = sentences(histogram, 20)
-    return render_template('home.html', tweet=sentence)
+    sentence = sentences(histogram, 15)
+    return render_template('home.html', tweet=sentence) 
+
