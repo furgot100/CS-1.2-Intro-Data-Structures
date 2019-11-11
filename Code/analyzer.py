@@ -1,3 +1,5 @@
+import re
+
 def read_words(file):
     with open(file, "r") as f:
         words = f.read().split()
