@@ -71,17 +71,17 @@ class Listogram(list):
     def get_sentece(self, ammount=15):
         words = []
         for i in range(ammount):
-            words.append(self.sample())
+            words.append(sample(self))
         sentence = ' '.join(words)
 
         return sentence
     
-def read_file(file):
-    with open(file, "r") as f:
-        words = f.read().split()
-    words = [re.sub('[^A-Za-z]+', '', word).lower() for word in words]
+    def read_file(file):
+        with open(file, "r") as f:
+            words = f.read().split()
+        words = [re.sub('[^A-Za-z]+', '', word).lower() for word in words]
 
-    return words
+        return words
 
 
 
