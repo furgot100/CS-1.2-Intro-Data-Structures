@@ -82,7 +82,7 @@ class LinkedList(object):
         # TODO: Create new node to hold given item
         # TODO: Prepend node before head, if it exists
         node = Node(item)
-        if self.head is not None:
+        if not self.is_empty():
             node.next = self.head
         else:
             self.tail = None
@@ -95,7 +95,7 @@ class LinkedList(object):
         TODO: Worst case running time: O(???) Why and under what conditions?"""
         # TODO: Loop through all nodes to find item where quality(item) is True
         # TODO: Check if node's data satisfies given quality function
-        if self.head is not None:
+        if not self.is_empty():
             current_node = self.head
             while current_node is not None:
                 if quality(current_node.data) is True:
@@ -116,7 +116,7 @@ class LinkedList(object):
         previous_node = None
         current_node = self.head
         found = False 
-        if self.head is None:
+        if self.is_empty():
             raise ValueError('Item not found: {}'.format(item))
 
         elif self.head == self.tail:

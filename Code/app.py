@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 from pymongo import MongoClient
-from Code.sample import get_sentence
-from Code.analyzer import histogram_dict
+from sample import sentences
+from analyzer import histogram_dict
 import os
 
 host = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/tweet-generator')
