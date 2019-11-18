@@ -6,6 +6,7 @@ def read_words(file):
     return words
 
 def histogram(file):
+    '''Reads texts. Counts a specific word in the text, returns a list of list'''
     text = read_words(file)
     histogram = []
     for word in text:
@@ -19,6 +20,7 @@ def histogram(file):
     return histogram
 
 def histogram_dict(file):
+    '''Reads a text and counts a specific word while returning a dictionary'''
     text = read_words(file)
     histogram = {}
     for word in text:
@@ -30,6 +32,7 @@ def histogram_dict(file):
 
 
 def histogram_tuple(file):
+    '''Reads a text and counts a specific word. Returns a list of tuples'''
     text = read_words(file)
     histogram = []
     amount = 0
@@ -47,14 +50,17 @@ def histogram_tuple(file):
     return histogram
 
 def unique_words(histogram):
+    '''Returns the amount of unique words'''
     return len(histogram)
 
 def frequency(word, histogram):
+    '''Return amount of times a word appears in the histogram set. With list of lists of tuples'''
     for list in histogram:
         if list[0] == word:
             return list[1]
 
 def frequency_dic(word,histogram):
+    '''Return ammount of times a word appears in a histogram set. With dictionary'''
     for i, keys in histogram.items():
         if i == word:
             return keys
