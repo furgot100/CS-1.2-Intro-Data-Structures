@@ -17,8 +17,9 @@ def path(word_list, ammount):
     sentence.append(nxt_word)
     for i in range(ammount):
         chain = next_chain(word_list, nxt_word)
-        next_word = chain.sample()
-        sentence.append(next_word)
+        if len(chain) > 0:
+            next_word = chain.sample()
+            sentence.append(next_word)
 
     return sentence
 
