@@ -82,7 +82,7 @@ class LinkedList(object):
         if not self.is_empty():
             node.next = self.head
         else:
-            self.tail = None
+            self.tail = node
         self.head = node
 
 
