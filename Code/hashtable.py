@@ -83,7 +83,7 @@ class HashTable(object):
         for current_key, value in bucket.items():
             if current_key == key:
                 return value
-            raise KeyError('Key not found: {}'.format(key))
+        raise KeyError('Key not found: {}'.format(key))
 
     def set(self, key, value):
         """Insert or update the given key with its associated value.
@@ -95,7 +95,7 @@ class HashTable(object):
                     bucket.delete((current_key, current_value))
                     bucket.append((key, value))
         else:
-            bucket.append(key,value)
+            bucket.append((key,value))
 
     def delete(self, key):
         """Delete the given key from this hash table, or raise KeyError.
