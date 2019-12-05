@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    text = 'texts/metamorphosis.txt'
+    text = 'texts/1984.txt'
     words = read_file(text)
     sentence = create_sentence(path(words, 15))
     return render_template('home.html', tweet=sentence)
