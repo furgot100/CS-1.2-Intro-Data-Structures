@@ -29,7 +29,23 @@ class Markov():
                 pairs.append(next_words_str)  
 
         dictionary[new_words] = Dictogram(pairs)
-        return dictionary  
+        return dictionary
+
+    def sample(self):
+        next_words = []
+        main_histogram = Dictogram(self.word_list)
+
+        next_word = main_histogram.sample()
+        next_words.append(next_word)
+        chain = self.next_chain(next_word)
+
+        for i in range(self.order - 1):
+            if len(chain) > 0:
+                word_next = chain.sample()
+                next_words.append(word_next)
+                chain = self.next_chain(word_next)
+        sample = " ".join(next_words)
+        return sample  
 
 
 
