@@ -47,24 +47,46 @@ class Markov():
         sample = " ".join(next_words)
         return sample  
 
+    def walk(self):
+        sentence = []
+        next_words = []
 
+        words_str = self.sample()
+        sentence.append(words_str)
 
-    def next_chain(word_list, new_word):
+        for i in range(self.amount - self.order):
+            next_words.clear()
+            chain = self.higher_order(words_str)
+            if len(chain[words_str]) > 0:
+                words_str = chain[words_str].sample()
+                next_words = words_str.split()
+                sentence.append(next_words[self.order - 1])
+        sentence = " ".join(sentence)
+        return sentence
+
+    def next_chain(self, new_word):
         chain_list = []
-        for i in range(len(word_list)-1):
-            if new_word == word_list[i]:
-                chain_list.append(word_list[i + 1])
+        for i in range(len(self.word_list) - 1):
+            if new_word == self.word_list[i]:
+                chain_list.append(self.word_list[i + 1])
+        
         chain = Dictogram(chain_list)
         return chain
 
+    def create_sentence(self, words):
+        split_words = words.split()
+        split_words[0] = split_words[0].capitalize()
 
-    def create_sentence(words):
-        words[0] = words[0].capitalize()
-        final_sentence = ' '.join(words) + '.'
+        final_sentence = ' '.join(split_words) + '.'
 
         return final_sentence
 
+    def main(self):
+        words = self.walk()
+        sentence = self.create_sentence(words)
+        return sentence
 
 if __name__ == '__main__':
     word_list = ['one', 'fish', 'two', 'fish', 'red', 'fish', 'blue', 'fish']
-    print(create_sentence(path(word_list, 15)))
+    markov = Markov(word_list, 15)
+    print(markov.main())
