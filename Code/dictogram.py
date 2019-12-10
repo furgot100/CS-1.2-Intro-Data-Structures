@@ -47,10 +47,10 @@ class Dictogram(dict):
 
         return frequency_list[ran_index]
 
-    def get_sentence(self, ammount=15):
+    def get_sentence(self, amount=15):
         words = []
-        for i in range(ammount):
-            words.append(self.sample())
+        for i in range(amount):
+            words.appendself.sample())
         sentence = ' '.join(words)
 
 

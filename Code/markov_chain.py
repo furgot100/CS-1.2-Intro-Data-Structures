@@ -17,7 +17,7 @@ class Markov():
         pairs = []
 
         for i in range(len(self.word_list)- 1):
-            words.clear
+            words.clear()
             for x in range(self.order):
                 if i < (len(self.word_list) - self.order):    
                     words.append(self.word_list[i + x])
@@ -55,7 +55,7 @@ class Markov():
         sentence.append(words_str)
 
         for i in range(self.amount - self.order):
-            next_words.clear()
+            # next_words.clear()
             chain = self.higher_order(words_str)
             if len(chain[words_str]) > 0:
                 words_str = chain[words_str].sample()

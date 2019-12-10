@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 from dictogram import read_file
-from markov_chain import create_sentence, path
+from markov_chain import Markov
 
 
 app = Flask(__name__)
@@ -8,8 +8,8 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     text = 'texts/1984.txt'
-    words = read_file(text)
-    sentence = create_sentence(path(words, 15))
+    markov = Markov(read_file(text), 20)
+    sentence = markov.main()
     return render_template('home.html', tweet=sentence)
 
 
