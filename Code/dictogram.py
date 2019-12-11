@@ -50,7 +50,7 @@ class Dictogram(dict):
     def get_sentence(self, amount=15):
         words = []
         for i in range(amount):
-            words.appendself.sample())
+            words.append(self.sample())
         sentence = ' '.join(words)
 
 
