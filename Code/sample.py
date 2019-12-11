@@ -9,6 +9,7 @@ import pytest
 #     return key[random_number]
 
 def sample_frequency(histogram):
+    """Takes dictionary histogram and adds the key to a list based on set amount"""
     frequency_list = []
     
     for key, value in histogram.items():
@@ -31,6 +32,7 @@ def test_sample_frequency():
 
 
 def sentences(histogram, ammount=10):
+    """combines sentences together to make sentences"""
     word = []
     for i in range(ammount):
         word.append(sample_frequency(histogram))

@@ -10,6 +10,9 @@ class Markov():
         self.order = order
 
     def higher_order(self, new_words):
+        """ Goes through word_list and combines two words in a string.
+        The amount of words is based on the order number. Checks if
+        string matches and combines with the string"""
         dictionary = dict()
         key_words = new_words.split()
         words = []
@@ -17,12 +20,12 @@ class Markov():
         pairs = []
 
         for i in range(len(self.word_list)- 1):
-            words.clear()
+            words *= 0
             for x in range(self.order):
                 if i < (len(self.word_list) - self.order):    
                     words.append(self.word_list[i + x])
             if words == key_words:
-                next_words.clear()
+                next_words *= 0
                 for x in range(self.order):
                     next_words.append(self.word_list[i + (x + 1)])
                 next_words_str = ' '.join(next_words)
@@ -32,6 +35,7 @@ class Markov():
         return dictionary
 
     def sample(self):
+        """The first word to start the chain"""
         next_words = []
         main_histogram = Dictogram(self.word_list)
 
@@ -48,6 +52,7 @@ class Markov():
         return sample  
 
     def walk(self):
+        """Uses initial word and begins chain."""
         sentence = []
         next_words = []
 
@@ -55,7 +60,7 @@ class Markov():
         sentence.append(words_str)
 
         for i in range(self.amount - self.order):
-            # next_words.clear()
+            next_words *= 0
             chain = self.higher_order(words_str)
             if len(chain[words_str]) > 0:
                 words_str = chain[words_str].sample()
@@ -65,6 +70,8 @@ class Markov():
         return sentence
 
     def next_chain(self, new_word):
+        """Appends next word in the list if it is equal to new_word
+        creates histogram with the words"""
         chain_list = []
         for i in range(len(self.word_list) - 1):
             if new_word == self.word_list[i]:
@@ -74,6 +81,7 @@ class Markov():
         return chain
 
     def create_sentence(self, words):
+        """Combines word into a 'coherent' sentence"""
         split_words = words.split()
         split_words[0] = split_words[0].capitalize()
 
